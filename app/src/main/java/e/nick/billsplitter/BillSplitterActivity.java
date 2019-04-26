@@ -1,11 +1,13 @@
 package e.nick.billsplitter;
 
 import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class BillSplitterActivity extends AppCompatActivity {
 
@@ -24,14 +26,16 @@ public class BillSplitterActivity extends AppCompatActivity {
     Creates 2 new EditText fields. First one to hold a name, second one to hold dollar value
      */
     public void addPerson(View V) {
-        ConstraintSet  cSet = new ConstraintSet();
-        personCount ++;
-        EditText editText = new EditText(this);
     }
+
+
     /*
     Grabs all info from EditText fields and will pass them to MoneySplit to calculate and display owing statements
+    Requires a map in the form of <Name, Funds>, passed as a map <String, Double>
      */
     public void calculate(View v) {
-
+        Map<String, Double> nameToFunds = new HashMap<>();
+        ConstraintLayout cl = new ConstraintLayout(this);
+        
     }
 }
