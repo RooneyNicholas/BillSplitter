@@ -2,4 +2,6 @@
     <string name="app_name">Bill Splitter</string>
     <string name="add_person">Add Person</string>
     <string name="calculate">Calculate</string>
+    <string name="name">Name</string>
+    <string name="dollar_amount">Dollar amount for name above</string>
 </resources>
