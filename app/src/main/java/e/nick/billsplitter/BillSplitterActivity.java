@@ -60,10 +60,11 @@ public class BillSplitterActivity extends AppCompatActivity {
         List<String> names = new ArrayList<>();
         List<Double> values = new ArrayList<>();
         Map<String, Double> map = new HashMap<>();
-        // Pattern pattern = Pattern.compile("^[a-zA-Z]+");
+        Pattern pattern = Pattern.compile("^[a-zA-Z]+");
         for (EditText editText : allEditText) {
             String enteredText = editText.getText().toString();
-            if (enteredText.contains("\\d+")) {
+            Matcher matcher = pattern.matcher(enteredText);
+            if (!matcher.matches()) {
                 values.add(Double.parseDouble(enteredText));
             } else {
                 names.add(enteredText);
@@ -76,13 +77,11 @@ public class BillSplitterActivity extends AppCompatActivity {
         moneySplit.setToAverage(map);
         moneySplit.setLists();
         moneySplit.zeroLists();
-        List<String> statements = moneySplit.getStatements();
+        List<String> statements = new ArrayList<>(moneySplit.getStatements());
         String listOfPayments = "";
         for (String s : statements) {
-            listOfPayments += ((TextView) findViewById(R.id.statements)).getText().toString() + "\n";
+            listOfPayments += s + ((TextView) findViewById(R.id.statements)).getText().toString().trim() + "\n";
         }
         ((TextView) findViewById(R.id.statements)).setText(listOfPayments);
     }
-
-
 }
