@@ -35,6 +35,8 @@ public class MoneySplit {
      */
     public void setTotal(Map<String, Double> funds) {
         this.payees = 0;
+        this.total = 0;
+        this.average = 0;
         for (String person : funds.keySet()) {
             this.total += funds.get(person);
             this.payees += 1;
