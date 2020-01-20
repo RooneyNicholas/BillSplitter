@@ -114,7 +114,7 @@ public class BillSplitterActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.statements)).setText(listOfPayments);
         } catch(Exception e) {
             Toast toast = Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG);
-           // toast.show();
+            toast.show();
         }
     }
 
