@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -89,10 +90,10 @@ public class MoneySplit {
                 double receive = this.creditors.get(j);
                 if (this.debtors.get(i) + this.creditors.get(j) >= 0 && this.creditors.get(j) < 0) {
                     payment = Math.abs(this.creditors.get(j));
-                    statement = this.debtorIndexes.get(i) + " owes " + this.creditorIndexes.get(j) + " " + payment;
+                    statement = this.debtorIndexes.get(i) + " owes " + this.creditorIndexes.get(j) + " " + String.format(Locale.CANADA,"%.2f",payment);
                 } else if (this.debtors.get(i) + this.creditors.get(j) < 0 && this.creditors.get(j) < 0) {
                     payment = this.debtors.get(i);
-                    statement = this.debtorIndexes.get(i) + " owes " + this.creditorIndexes.get(j) + " " + payment;
+                    statement = this.debtorIndexes.get(i) + " owes " + this.creditorIndexes.get(j) + " " + String.format(Locale.CANADA,"%.2f",payment);
                 }
                 if (!statement.equals("")) {
                     this.statements.add(statement);
@@ -101,38 +102,6 @@ public class MoneySplit {
                 this.creditors.set(j, receive + payment);
             }
         }
-    }
-
-    public Map<String, Double> getChangeFromAvg() {
-        return this.changeFromAvg;
-    }
-
-    public double getAveragePayment() {
-        return this.average;
-    }
-
-    public double getTotal() {
-        return this.total;
-    }
-
-    public int getTotalPeople() {
-        return this.payees;
-    }
-
-    public List<Double> getDebtors() {
-        return this.debtors;
-    }
-
-    public List<Double> getCreditors() {
-        return this.creditors;
-    }
-
-    public Map<Integer, String> getDebtorIndexes() {
-        return this.debtorIndexes;
-    }
-
-    public Map<Integer, String> getCreditorIndexes() {
-        return this.creditorIndexes;
     }
 
     public List<String> getStatements() {
